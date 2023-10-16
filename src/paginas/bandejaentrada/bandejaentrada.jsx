@@ -1,5 +1,5 @@
 import React from "react";
 
 export const BandejaEntrada = () => {
-  return <div>BandejaEntrada</div>;
+  return <div className="">BandejaEntrada</div>;
 };
