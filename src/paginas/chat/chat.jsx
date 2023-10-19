@@ -1,4 +1,5 @@
 import React from "react";
+import enviar from '../../assets/enviar.png'
 
 export const Chat = () => {
   return (
@@ -76,7 +77,7 @@ export const Chat = () => {
           </span>
           <span class="p-2 col-span-1">
             <button type="submit" class="py-1 w-full drop-shadow-xl">
-              <img src="rsc/Iconos/avion-de-papel.png" class="h-7" />
+              <img src={enviar} alt="" class="h-7" />
             </button>
           </span>
         </form>

@@ -1,4 +1,5 @@
 import React from "react";
+import usuario2 from '../../assets/usuario2.webp'
 
 export const OfertaTrabajo = () => {
   return (
@@ -11,7 +12,8 @@ export const OfertaTrabajo = () => {
         </div>
         <div class="col-span-2 flex justify-end">
           <img
-            src="rsc/Imagenes/user-2935527_1280.webp"
+            src={usuario2}
+            alt=""
             class="w-20 rounded-2xl drop-shadow-lg"
           />
         </div>
