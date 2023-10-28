@@ -1,33 +1,45 @@
-import React from "react";
-import usuario2 from '../../assets/usuario2.webp';
+import React, { useEffect, useState } from "react";
 
 export const Mensaje = () => {
+  const [mensajes, setMensajes] = useState([]);
+
+  useEffect(() => {
+    fetch("/testjsons/mensajes.json")
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        setMensajes(data.mensajes);
+      });
+  }, []);
+
   return (
-    <div className="col-span-1 p-4">
-      <div className="border border-black rounded-lg col-span-1 p-5 bg-gray-50 drop-shadow-lg grid grid-cols-8 m-auto">
-        <div className="col-span-6">
-          <h3>Nombre: Lorem Ipsum</h3>
-          <p>
-            Mensaje: Non sapien. Sed nec malesuada lacus. Cras pellentesque nisi
-            libero...
-          </p>
+    <div className="grid grid-cols-6">
+      {mensajes.map((mensaje, index) => (
+        <div className="col-span-4">
+        <div
+          key={index}
+          className="border border-black rounded-lg col-span-1 p-5 bg-gray-50 drop-shadow-lg grid grid-cols-8 m-auto"
+        >
+          <div className="col-span-6">
+            <h3>Nombre: {mensaje.nombre}</h3>
+            <p>Mensaje: {mensaje.mensaje}</p>
+          </div>
+          <div className="col-span-2 flex justify-end">
+            <img src={mensaje.imagen} alt="" />
+          </div>
+          <div>
+            <button
+              type="button"
+              className="border rounded-xl bg-blue-600 text-white p-1 px-3 shadow drop-shadow-xl"
+            >
+              Chatear
+            </button>
+          </div>
         </div>
-        <div className="col-span-2 flex justify-end">
-          <img
-            src={usuario2}
-            alt =""
-            className="w-20 rounded-2xl drop-shadow-lg"
-          />
         </div>
-        <div className="col-span-full flex justify-center p-2">
-          <button
-            type="button"
-            className="border rounded-xl bg-blue-600 text-white p-1 px-3 shadow drop-shadow-xl"
-          >
-            Chatear
-          </button>
-        </div>
-      </div>
+      ))}
     </div>
   );
 };
+

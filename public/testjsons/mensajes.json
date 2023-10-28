@@ -1,0 +1,48 @@
+{
+    "mensajes":[
+        {
+            "id":110,
+            "nombre":"Walmart", 
+            "mensaje":"Ejemplo de mensaje",
+            "imagen":"../../assets/logo.png"
+        }, 
+        {
+            "id":120, 
+            "nombre":"Codelco",
+            "mensaje":"Ejemplo de mensaje", 
+            "imagen":"../../assets/logo.png"
+        }, 
+        {
+            "id":130,
+            "nombre":"IBM", 
+            "mensaje":"Ejemplo de mensaje",
+            "imagen":"../../assets/logo.png"
+        }, 
+        {
+            "id":140,
+            "nombre":"HP",
+            "mensaje":"Ejemplo de mensaje",
+            "imagen":"../../assets/logo.png"
+        
+        },
+        {
+            "id":150,
+            "nombre":"ENEX",
+            "mensaje":"Ejemplo de mensaje",
+            "imagen":"../../assets/logo.png"
+        }, 
+        {
+            "id":160,
+            "nombre":"Carozzi",
+            "mensaje":"Ejemplo de mensaje", 
+            "imagen":"../../assets/logo.png"
+        },
+        {
+            "id":170, 
+            "nombre":"CCU", 
+            "mensaje":"Ejemplo de mensaje", 
+            "imagen":"../../assets/logo.png"
+        }
+
+    ]
+}
