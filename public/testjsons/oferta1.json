@@ -1,0 +1,78 @@
+{
+    "practicas":[
+        {
+            "id":30, 
+            "title":"ejemplo de practica", 
+            "nombreEmpresa":"ejemplo de nombre empresa", 
+            "ubicacion":"San Fernando", 
+            "descripcion":"ejemplo de descripcion", 
+            "category":"practica", 
+            "imagen":"../../assets/logo.png"
+        }, 
+        {
+            "id":40, 
+            "title":"ejemplo part time", 
+            "nombreEmpresa":"Walmart", 
+            "ubicacion":"Longavi", 
+            "descripcion":"ejemplo de descripcion",
+            "category":"part-time", 
+            "imagen":"../../assets/logo.png" 
+        },
+        {
+            "id":50,
+            "title":"ejemplo full time", 
+            "nombreEmpresa":"Codelco",
+            "ubicacion":"Antofagasta",
+            "descripcion":"ejemplo de descripcion",
+            "category":"full-time",
+            "imagen":"../../assets/logo.png" 
+        }, 
+        {
+            "id":60, 
+            "title":"ejemplo de practica", 
+            "nombreEmpresa":"IBM", 
+            "ubicacion":"Antofagasta", 
+            "descripcion":"ejemplo de descripcion", 
+            "category":"practica", 
+            "imagen":"../../assets/logo.png"
+        }, 
+        {
+            "id":70, 
+            "title":"ejemplo full time", 
+            "nombreEmpresa":"Microsoft", 
+            "ubicacion":"Santiago", 
+            "descripcion":"ejemplo de descripcion",
+            "category":"full-time", 
+            "imagen":"../../assets/logo.png" 
+        },
+        {
+            "id":80, 
+            "title":"ejemplo part time", 
+            "nombreEmpresa":"Banco de chile", 
+            "ubicacion":"Santiago",
+            "descripcion":"ejemplo de descripcion",
+            "category":"full-time", 
+            "imagen":"../../assets/logo.png"
+        }, 
+        {
+            "id":90, 
+            "title":"ejemplo de practica",
+            "nombreEmpresa":"Itau", 
+            "ubicacion":"Rancagua",
+            "descripcion":"ejemplo de descripcion",
+            "category":"practica",
+            "imagen":"../../assets/logo.png"
+        }, 
+        {
+            "id":100,
+            "title":"ejemplo part time", 
+            "nombreEmpresa":"Accenture", 
+            "ubicacion":"Santiago", 
+            "descripcion":"ejemplo de descripcion",
+            "category":"practica",
+            "imagen":"../../assets/logo.png"
+        }
+
+
+    ]
+}

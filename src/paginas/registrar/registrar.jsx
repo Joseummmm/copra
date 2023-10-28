@@ -1,10 +1,21 @@
-import React from "react";
+
+
+import React from "react"; 
+import {useForm} from "react-hook-form" 
 
 export const Registrar = () => {
+  
+  const {register,formState:{errors},handleSubmit} = useForm(); 
+
+  const onSubmit = (data) => {
+    console.log(data); 
+  }
+
+
   return (
     <div class="flex justify-center pt-16">
       <div class="w-1/2">
-        <form class="px-10 bg-gray-50 border rounded-md drop-shadow-lg">
+        <form class="px-10 bg-gray-50 border rounded-md drop-shadow-lg" onSubmit={handleSubmit(onSubmit)}>
           <div>
             <h1 class="text-4xl font-bold text-center pt-10">
               Crear una cuenta nueva
@@ -21,38 +32,73 @@ export const Registrar = () => {
                 type="text"
                 id="username"
                 placeholder="Nombre de usuario"
-                required
+                {...register("username",{required:true, minLength:{
+                  value: 2, 
+                  message: "El nombre debe tener al menos 2 caracteres",
+                  },
+              })}
               />
+              {
+                errors.username && (
+                  <strong class="col-span-full flex justify-start p-2">{errors.username.message}</strong>
+                )
+              }
             </div>
-
             <div class="col-span-3 flex justify-center p-2">
               <input
                 class=" placeholder-black border border-black rounded-md pl-2 w-full drop-shadow-lg py-1"
                 type="text"
                 id="rut"
                 placeholder="Rut (con guión y sin puntos)"
-                required
+                {...register("rut",{required:true,minLength:{
+                  value: 9,
+                  message: "Rut debe tener al menos 9 caracteres",
+                }, 
+              })}
               />
             </div>
-
+            {
+              errors.rut && (
+                <strong class="col-span-full flex justify-center p-2">{errors.rut.message}</strong>
+              )
+            }
+            
             <div class="col-span-4 flex justify-center p-2">
               <input
                 class=" placeholder-black border border-black rounded-md pl-2 w-full drop-shadow-lg py-1"
                 type="email"
                 id="email"
                 placeholder="Correo electrónico"
-                required
+                {...register("email",{required:true,minLength:{
+                  value: /\S+@\S+\.\S+/, 
+                  message: "Ingrese un correo electronico valido",
+                },
+              })}
               />
             </div>
-
+            {
+              errors.email && (
+                <strong class="col-span-full flex justify-center p-2">{errors.email.message}</strong>
+              )
+            }
             <div class="col-span-4 flex justify-center p-2">
               <input
                 class=" placeholder-black border border-black rounded-md pl-2 w-full drop-shadow-lg py-1"
                 type="tel"
                 id="tel"
-                placeholder="Teléfono (opcional)"
+                placeholder="Telefono"
+                {...register("tel",{required:true,minLength:{
+                  value: 9, 
+                  message: "Telefono debe tener al menos 9 caracteres",
+                },
+              })}
               />
             </div>
+            {
+              errors.tel && (
+                <strong class="col-span-full flex justify-center p-2">{errors.tel.message}</strong>
+              )
+            }
 
             <div class="col-span-4 flex justify-center p-2">
               <select
@@ -75,16 +121,24 @@ export const Registrar = () => {
                 </option>
               </select>
             </div>
-
             <div class="col-span-4 flex justify-center p-2">
               <input
                 class=" placeholder-black border border-black rounded-md pl-2 w-full drop-shadow-lg py-1"
                 type="password"
                 id="password"
                 placeholder="Contraseña"
-                required
+                {...register("password",{required:true,minLength:{
+                  value: 8, 
+                  message: "La contraseña debe tener al menos 8 caracteres",
+                },
+              })}
               />
             </div>
+            {
+              errors.password && (
+                <strong class="col-span-full flex justify-center">{errors.password.message}</strong>
+              )
+            }
 
             <div class="col-span-4 flex justify-center p-2">
               <input
@@ -92,10 +146,9 @@ export const Registrar = () => {
                 type="password"
                 id="passwordConf"
                 placeholder="Confirmar contraseña"
-                required
+                {...register("passwordConf",{required:true})}
               />
             </div>
-
             <div class="col-span-full p-2">
               <input
                 class="drop-shadow-lg w-4 h-4"
@@ -104,7 +157,7 @@ export const Registrar = () => {
                 placeholder="Términos y condiciones"
                 required
               />
-              <label for="checkbox">Acepto los términos y condiciones</label>
+              <label htmlFor="checkbox">Acepto los términos y condiciones</label>
             </div>
 
             <div class="col-span-full py-10 flex justify-center">

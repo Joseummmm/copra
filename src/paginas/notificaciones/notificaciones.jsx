@@ -3,7 +3,7 @@ import aprobado from '../../assets/aprobado.png';
 import noAprobado from '../../assets/no_aprobado.png';
 import logo from '../../assets/logo.png';
 
-export const Notificaciones = () => {
+export const Notificaciones = ({practicas}) => {
   return (
       <div class="border p-4 flex justify-center items-center h-screen">
         <div class="grid grid-cols-1 w-1/2">
