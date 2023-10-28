@@ -10,10 +10,12 @@ export const BandejaEntrada = () => {
 
   return (
     <div>
-      <div className="flex justify-center">
+      <div class="w-full flex justify-center">
         <h1 className="text-3xl py-4">Bandeja de entrada</h1>
       </div>
-      <div className="m-auto grid grid-cols-2 w-3/4">{mensajes}</div>
+      <div class="w-full flex justify-center">
+        <div className="m-auto grid grid-cols-2 w-full">{mensajes}</div>
+      </div>
     </div>
   );
 };

@@ -31,7 +31,7 @@ export const Busqueda = () => {
           </span>
         </form>
       </div>
-      <div class="m-auto grid grid-cols-2 w-3/4">{ofertasTrabajos}</div>
+      <div class="w-full">{ofertasTrabajos}</div>
     </div>
   );
 };
