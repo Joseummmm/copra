@@ -23,13 +23,13 @@ export const Notificaciones = () => {
       <div className="border p-4 flex justify-center items-center">
         <div className="grid grid-cols-1 w-1/2">
           {notificaciones.map((notificacion, index) => (
-            <div className="col-span-1 p-4" key={index}>
+            <div className="col-span-1 p-4 " key={index}>
               <div className="border border-black rounded-lg col-span-1 p-5 bg-gray-50 drop-shadow-lg grid grid-cols-8">
-                <div className="flex items-start justify-start">
+                <div className="col-span-2 grid justify-start w-3/2">
                   <img
                     src={notificacion.logo}
                     alt=""
-                    className=" drop-shadow-lg w-400 h-200"
+                    className=" drop-shadow-lg w-3/12"
                   />
                 </div>
                 <div className="col-span-6">
