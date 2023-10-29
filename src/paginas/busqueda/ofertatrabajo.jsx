@@ -25,12 +25,22 @@ export const OfertaTrabajo = () => {
             <h3 class="col-span-full">{practica.title}</h3>
             <p class="col-span-2">{practica.nombreEmpresa}</p>
             <p class="col-span-2">{practica.ubicacion}</p>
-            <div class="col-span-2 flex justify-center">
-              <img src={practica.imagen} alt="imagen de empresa" />
+            <div class="col-span-2 flex justify-end">
+              <div className= "drop-shadow-lg grid grid-cols w-3/4">
+                <img src={practica.imagen} alt="imagen de empresa" class="w-1/2"/>
+              </div>
             </div>
             <div class="col-span-full flex justify-center">
-              <p>{practica.descripcion}</p>
+              <p>{practica.descripcion}</p> 
             </div>
+            <div class="col-span-full flex justify-center">
+                <button
+                  type="button"
+                  class="border rounded-xl bg-blue-600 text-white p-2 px-6 shadow drop-shadow-xl mx-4"
+                >
+                  Postular
+                </button>
+              </div> 
           </div>
         </div>
       ))}

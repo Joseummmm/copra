@@ -4,7 +4,7 @@ import { Mensaje } from "./mensaje";
 export const BandejaEntrada = () => {
   const mensajes = [];
 
-  for (let i = 0; i < 6; i++) {
+  for (let i = 0; i < 1; i++) {
     mensajes.push(<Mensaje key={i} />);
   }
 

@@ -4,7 +4,7 @@ import { OfertaTrabajo } from "./ofertatrabajo";
 export const Busqueda = () => {
   const ofertasTrabajos = [];
 
-  for (let i = 0; i < 6; i++) {
+  for (let i = 0; i < 1; i++) {
     ofertasTrabajos.push(<OfertaTrabajo key={i} />);
   }
   return (

@@ -1,0 +1,17 @@
+{
+    "notificaciones":[
+        {
+            "id":180,
+            "nombre":"Practica TI Walmart", 
+            "estado":true,
+            "logo":"https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Walmart_Chile_Logo_1.svg/1020px-Walmart_Chile_Logo_1.svg.png"
+        },
+
+        {
+            "id":190, 
+            "nombre":"Practica ciberseguridad Banco de Chile",
+            "estado":false,
+            "logo":"https://upload.wikimedia.org/wikipedia/en/thumb/b/b3/Banco_de_Chile_logo.svg/725px-Banco_de_Chile_logo.svg.png?20180321211128"
+        }
+    ]
+}

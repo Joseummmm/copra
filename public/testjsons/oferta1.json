@@ -3,11 +3,11 @@
         {
             "id":30, 
             "title":"ejemplo de practica", 
-            "nombreEmpresa":"ejemplo de nombre empresa", 
+            "nombreEmpresa":"CCU", 
             "ubicacion":"San Fernando", 
             "descripcion":"ejemplo de descripcion", 
             "category":"practica", 
-            "imagen":"../../assets/logo.png"
+            "imagen":"https://upload.wikimedia.org/wikipedia/commons/1/19/CCU_LOGO.png"
         }, 
         {
             "id":40, 
@@ -16,7 +16,7 @@
             "ubicacion":"Longavi", 
             "descripcion":"ejemplo de descripcion",
             "category":"part-time", 
-            "imagen":"../../assets/logo.png" 
+            "imagen":"https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Walmart_Chile_Logo_1.svg/1020px-Walmart_Chile_Logo_1.svg.png" 
         },
         {
             "id":50,
@@ -25,7 +25,7 @@
             "ubicacion":"Antofagasta",
             "descripcion":"ejemplo de descripcion",
             "category":"full-time",
-            "imagen":"../../assets/logo.png" 
+            "imagen":"https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Codelco_logo.svg/75px-Codelco_logo.svg.png" 
         }, 
         {
             "id":60, 
@@ -34,7 +34,7 @@
             "ubicacion":"Antofagasta", 
             "descripcion":"ejemplo de descripcion", 
             "category":"practica", 
-            "imagen":"../../assets/logo.png"
+            "imagen":"https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/1200px-IBM_logo.svg.png"
         }, 
         {
             "id":70, 
@@ -43,7 +43,7 @@
             "ubicacion":"Santiago", 
             "descripcion":"ejemplo de descripcion",
             "category":"full-time", 
-            "imagen":"../../assets/logo.png" 
+            "imagen":"https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Microsoft_logo_%282012%29.svg/768px-Microsoft_logo_%282012%29.svg.png" 
         },
         {
             "id":80, 
@@ -52,16 +52,16 @@
             "ubicacion":"Santiago",
             "descripcion":"ejemplo de descripcion",
             "category":"full-time", 
-            "imagen":"../../assets/logo.png"
+            "imagen":"https://upload.wikimedia.org/wikipedia/en/thumb/b/b3/Banco_de_Chile_logo.svg/725px-Banco_de_Chile_logo.svg.png?20180321211128"
         }, 
         {
             "id":90, 
             "title":"ejemplo de practica",
-            "nombreEmpresa":"Itau", 
+            "nombreEmpresa":"Cencosud", 
             "ubicacion":"Rancagua",
             "descripcion":"ejemplo de descripcion",
             "category":"practica",
-            "imagen":"../../assets/logo.png"
+            "imagen":"https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Cencosud_logo.svg/300px-Cencosud_logo.svg.png"
         }, 
         {
             "id":100,
@@ -70,7 +70,7 @@
             "ubicacion":"Santiago", 
             "descripcion":"ejemplo de descripcion",
             "category":"practica",
-            "imagen":"../../assets/logo.png"
+            "imagen":"https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Accenture.svg/768px-Accenture.svg.png"
         }
 
 

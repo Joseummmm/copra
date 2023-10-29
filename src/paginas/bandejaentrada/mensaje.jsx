@@ -25,8 +25,8 @@ export const Mensaje = () => {
               <h3>Nombre: {mensaje.nombre}</h3>
               <p>Mensaje: {mensaje.mensaje}</p>
             </div>
-            <div class="col-span-2 flex justify-center">
-              <img src={mensaje.imagen} alt="imagen de empresa" />
+            <div class="col-span-2 flex justify-center w-3/2">
+              <img src={mensaje.imagen} alt="imagen de empresa" class="flex justify-center w-3/2"/>
             </div>
             <div class="col-span-full flex justify-center">
               <button
