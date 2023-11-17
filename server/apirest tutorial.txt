@@ -1,0 +1,37 @@
+----ejemplo de datos a ingresar en post:
+{
+    "practicas": [
+        {
+            "id": 31,
+            "title": "ejemplo de practica",
+            "nombreEmpresa": "CCU",
+            "ubicacion": "San Fernando",
+            "descripcion": "ejemplo de descripcion",
+            "category": "practica",
+            "imagen": "https://upload.wikimedia.org/wikipedia/commons/19/CCU_LOGO.png"
+        }
+    ]
+}
+----en delete:
+Eliminar una práctica por id_practica: DELETE http://localhost:3000/practicas/30 (reemplaza 30 con el ID que desees).
+Eliminar una práctica por nombre_practica: DELETE http://localhost:3000/practicas/nombre/ejemplo%20de%20practica (reemplaza ejemplo%20de%20practica con el nombre que desees, asegúrate de codificar espacios y caracteres especiales en la URL).
+
+----put:
+Actualizar una práctica por id_practica: PUT http://localhost:3000/practicas/30 (reemplaza 30 con el ID de la práctica que deseas actualizar). En el cuerpo de la solicitud, debes enviar un objeto con los nuevos datos que deseas asignar.
+	ejemplo de cuerpo:
+		{
+			"updatedData": {
+			"nombreEmpresa": "Nueva Empresa",
+ 		 	"ubicacion": "Nueva Ubicacion",
+  		 	"descripcion": "Nueva Descripcion",
+   		 	"category": "Nueva Categoria",
+  		 	"imagen": "Nueva Imagen URL"
+  		}
+		}
+Actualizar una práctica por nombre_practica: PUT http://localhost:3000/practicas/nombre/ejemplo%20de%20practica (reemplaza ejemplo%20de%20practica con el nombre de la práctica que deseas actualizar). En el cuerpo de la solicitud, debes enviar un objeto con los nuevos datos que deseas asignar.
+	se utiliza el mismo cuerpo
+
+----get
+Obtener todas las prácticas: http://localhost:3000/practicas
+Obtener una práctica por id_practica: http://localhost:3000/practicas/30 (reemplaza 30 con el ID que desees)
+Obtener una práctica por nombre_practica: http://localhost:3000/practicas/nombre/ejemplo%20de%20practica (reemplaza ejemplo%20de%20practica con el nombre que desees, asegúrate de codificar espacios y caracteres especiales en la URL).
