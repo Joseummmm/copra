@@ -1,31 +1,21 @@
 import React, { useEffect, useState } from "react";
 
 export const OfertaTrabajo = () => {
-  const [practicas, setPracticas] = useState([]);
+  const [practicas, setPracticas] = useState([]); //se declaran las varibles practicas y set practicas practicas cumple la funcionalidad de almacenar objetos relacionados
+  //SetPracticas se utiliza para modificar el estado del objeto practica
 
   useEffect(() => {
-    // Se utiliza la función fetch para cargar los datos desde la API
-    fetch("http://localhost:3001/practicas")
-      .then((response) => {
-        // Verifica si la respuesta es exitosa (código 200)
-        if (!response.ok) {
-          throw new Error(`Error al obtener las prácticas: ${response.statusText}`);
-        }
-        // Se interpretan los datos como tipo JSON
-        return response.json();
+    //Se utiliza la funcion fetch para cargar el archivo JSON
+    fetch("/testjsons/oferta1.json")
+      .then((datos) => {
+        //Se interpretan los datos como tipo JSON
+        return datos.json();
       })
       .then((data) => {
-        // setPracticas va a ir actualizando el valor del objeto practicas
-        setPracticas(data);
-      })
-      .catch((error) => {
-        console.error('Error al obtener las prácticas:', error);
-        // Puedes manejar el error según tus necesidades
+        //setPracticas va ir actualizando el valor del objeto practicas
+        setPracticas(data.practicas);
       });
   }, []);
-  
-  // Resto del componente...
-  
 
   return (
     <div class="w-3/4 m-auto">
