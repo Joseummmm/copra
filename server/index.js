@@ -156,3 +156,69 @@ app.put('/practicas/:id_practica', (req, res) => {
     }
   });
 });
+
+app.post('/usuarios', (req, res) => {
+  const usuarios = req.body.usuarios;
+
+  // Verifica si se recibieron usuarios en la solicitud
+  if (!usuarios || !Array.isArray(usuarios)) {
+      return res.status(400).json({ error: 'Formato de solicitud no válido' });
+  }
+
+  // Itera sobre los usuarios y realiza la inserción en la base de datos
+  usuarios.forEach((usuario) => {
+      const { email, tipo_usuario, nombre, descripcion, area_trabajo, password } = usuario;
+
+      const query = 'INSERT INTO usuarios (email, tipo_usuario, nombre, descripcion, area_trabajo, password) VALUES (?, ?, ?, ?, ?, ?)';
+      const values = [email, tipo_usuario, nombre, descripcion, area_trabajo, password];
+
+      con.query(query, values, (err, result) => {
+          if (err) {
+              console.error('Error al insertar en la base de datos:', err);
+              res.status(500).json({ error: 'Error interno del servidor' });
+          } else {
+              console.log(`Usuario con email ${email} insertado correctamente`);
+          }
+      });
+  });
+
+  res.json({ message: 'Datos insertados correctamente' });
+});
+
+// Ruta para verificar correo y contraseña
+app.post('/usuarios/verificarCredenciales', (req, res) => {
+  const { email, password } = req.body;
+
+  // Verifica si se recibieron el correo y la contraseña en la solicitud
+  if (!email || !password) {
+      return res.status(400).json({ error: 'Formato de solicitud no válido' });
+  }
+
+  // Realiza la consulta en la base de datos para verificar las credenciales
+  const query = 'SELECT * FROM usuarios WHERE email = ? AND password = ?';
+  const values = [email, password];
+
+  con.query(query, values, (err, result) => {
+      if (err) {
+          console.error('Error al verificar credenciales:', err);
+          res.status(500).json({ error: 'Error interno del servidor' });
+      } else {
+          if (result.length > 0) {
+              // Si se encuentra un usuario con las credenciales proporcionadas, devuelve true
+              res.json({ autenticado: true });
+          } else {
+              // Si no se encuentra un usuario con las credenciales proporcionadas, devuelve false
+              res.json({ autenticado: false });
+          }
+      }
+  });
+});
+
+/*json de ejemplo
+
+{
+		"email":"joseurbina0208@gmail.com", 
+		"password":"123456"
+}
+
+*/

@@ -22,19 +22,19 @@ export const Notificaciones = () => {
   return (
       <div className="border p-4 flex justify-center items-center">
         <div className="grid grid-cols-1 w-1/2">
-          {notificaciones.map((notificacion, index) => (
+          {postulaciones.map((postulacion, index) => (
             <div className="col-span-1 p-4 " key={index}>
               <div className="border border-black rounded-lg col-span-1 p-5 bg-gray-50 drop-shadow-lg grid grid-cols-8">
                 <div className="col-span-2 grid justify-start w-3/2">
                   <img
-                    src={notificacion.logo}
+                    src={postulacion.logo}
                     alt=""
                     className=" drop-shadow-lg w-3/12"
                   />
                 </div>
                 <div className="col-span-6">
-                  <h3>{notificacion.nombre}</h3>
-                  {notificacion.estado ? (
+                  <h3>{postulacion.nombre}</h3>
+                  {postulacion.estado ? (
                     <div>
                       <p>Estado de solicitud: Aprobado</p>
                       <div className="flex justify-center p-2 col-span-1">
