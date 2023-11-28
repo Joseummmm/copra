@@ -4,6 +4,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const mysql = require("mysql");
 const cors = require("cors"); // Agrega esta línea
+const crypto = require('crypto');
 var con = mysql.createConnection({
     host: "localhost",
     user: "root",
@@ -169,8 +170,11 @@ app.post('/usuarios', (req, res) => {
   usuarios.forEach((usuario) => {
       const { email, tipo_usuario, nombre, descripcion, area_trabajo, password } = usuario;
 
+      // Encripta la contraseña con MD5
+      const encryptedPassword = crypto.createHash('md5').update(password).digest('hex');
+
       const query = 'INSERT INTO usuarios (email, tipo_usuario, nombre, descripcion, area_trabajo, password) VALUES (?, ?, ?, ?, ?, ?)';
-      const values = [email, tipo_usuario, nombre, descripcion, area_trabajo, password];
+      const values = [email, tipo_usuario, nombre, descripcion, area_trabajo, encryptedPassword];
 
       con.query(query, values, (err, result) => {
           if (err) {
@@ -194,9 +198,12 @@ app.post('/usuarios/verificarCredenciales', (req, res) => {
       return res.status(400).json({ error: 'Formato de solicitud no válido' });
   }
 
+  // Encripta la contraseña proporcionada con MD5
+  const encryptedPassword = crypto.createHash('md5').update(password).digest('hex');
+
   // Realiza la consulta en la base de datos para verificar las credenciales
   const query = 'SELECT * FROM usuarios WHERE email = ? AND password = ?';
-  const values = [email, password];
+  const values = [email, encryptedPassword];
 
   con.query(query, values, (err, result) => {
       if (err) {
@@ -213,7 +220,6 @@ app.post('/usuarios/verificarCredenciales', (req, res) => {
       }
   });
 });
-
 /*json de ejemplo
 
 {
