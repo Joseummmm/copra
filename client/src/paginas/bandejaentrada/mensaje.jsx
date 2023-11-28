@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import {useNavigate} from "react-router-dom"; 
+
 
 export const Mensaje = () => {
   const [mensajes, setMensajes] = useState([]);
+  const [contactoId, setContactoId] =useState(null);
+  const navigate = useNavigate();  
 
   useEffect(() => {
     fetch("/testjsons/mensajes.json")
@@ -29,12 +34,16 @@ export const Mensaje = () => {
               <img src={mensaje.imagen} alt="imagen de empresa" class="flex justify-center w-3/2"/>
             </div>
             <div class="col-span-full flex justify-center">
-              <button
+              <Link
+                to ={`/contacto/${mensaje.id}`}
                 type="button"
                 class="border rounded-xl bg-blue-600 text-white p-1 px-3 shadow drop-shadow-xl"
+                onClick = {() => {setContactoId(mensaje.id); 
+                          navigate(`/contacto/${mensaje.id}`);
+                }}
               >
-                Chatear
-              </button>
+                Contactar
+              </Link>
             </div>
           </div>
         </div>

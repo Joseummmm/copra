@@ -1,0 +1,61 @@
+{
+    "contacto":[
+        {
+            "id": 110, 
+            "nombre":"Walmart",
+            "ubicacion": "Longavi", 
+            "telefono":"+56 9 1234 5678", 
+            "email": "walmart_empleos2023@gmail.com",
+            "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Walmart_Chile_Logo_1.svg/1020px-Walmart_Chile_Logo_1.svg.png"
+        },
+        {
+            "id": 170,
+            "nombre": "CCU",
+            "ubicacion":"San Fernando",
+            "telefono":"+56 9 2345 6789", 
+            "email": "ccu_empleos2023@gmail.com", 
+            "imagen":"https://upload.wikimedia.org/wikipedia/commons/1/19/CCU_LOGO.png"
+        }, 
+        {
+            "id":120,
+            "nombre":"Codelco", 
+            "ubicacion":"Antofagasta",
+            "telefono":"+56 9 3456 7890", 
+            "email":"codelco_empleos2023@gmail.com",
+            "imagen":"https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Codelco_logo.svg/75px-Codelco_logo.svg.png" 
+        }, 
+        {
+            "id":130, 
+            "nombre":"IBM",
+            "ubicacion":"Antofagasta", 
+            "telefono":"+56 9 4567 8901", 
+            "email":"ibm_empleos2023@gmail.com", 
+            "imagen":"https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/1200px-IBM_logo.svg.png"
+        },
+        {
+            "id":140,
+            "nombre":"Cencosud",
+            "ubicacion":"Santiago", 
+            "telefono":"+56 9 5678 9012",
+            "email":"cencosud_empleos2023@gmail.com",
+            "imagen":"https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Cencosud_logo.svg/300px-Cencosud_logo.svg.png"
+        },
+        {
+            "id":150,
+            "nombre":"ENEX",
+            "ubicacion":"Valparaiso", 
+            "telefono":"+56 9 6789 0123",
+            "email":"enex_careers2023@gmail.com",
+            "imagen":"https://acp.enex.cl/login/img/enex.png"
+        },
+        {
+            "id":160,
+            "nombre":"Carozzi",
+            "ubicacion":"Santiago",
+            "telefono":"+56 9 9012 3456",
+            "email":"carozzi_empleos2023@gmail.com",
+            "imagen":"https://upload.wikimedia.org/wikipedia/commons/8/8e/Carozzi.png"
+        }
+        
+    ]
+}
