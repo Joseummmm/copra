@@ -1,4 +1,5 @@
 "use strict";
+require('dotenv').config(); 
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
@@ -11,10 +12,10 @@ const crypto = require('crypto');
 let textoDelCaptchaGenerado;
 
 var con = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "",
-    database: "copra"
+    host: variables.env.DB_HOST,
+    user: variables.env.DB_USER,
+    password: variables.env.DB_PASSWORD,
+    database: variables.env.DB_DATABASE
 });
 con.connect(function (error) {
     if (error) {
@@ -27,7 +28,7 @@ con.connect(function (error) {
 
 const configuracion = {
     hostname: "localhost",
-    port: 3001,
+    port: variables.env.PORT 
 };
 
 app.listen(configuracion, () => {

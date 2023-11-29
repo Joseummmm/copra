@@ -4,18 +4,6 @@ import { useForm } from "react-hook-form";
 export const IniciarSesion = () => {
   const { register, formState: { errors }, handleSubmit } = useForm();
   const [mensaje, setMensaje] = useState(null);
-  const [captcha, setCaptcha] = useState(null);
-
-  const obtenerCaptcha = async () => {
-    try {
-      const response = await fetch("http://localhost:3001/captcha");
-      const blob = await response.blob();
-      const imageUrl = URL.createObjectURL(blob);
-      setCaptcha(imageUrl);
-    } catch (error) {
-      console.error("Error al obtener el Captcha", error);
-    }
-  };
 
   const onSubmit = async (data) => {
     try {
@@ -33,18 +21,12 @@ export const IniciarSesion = () => {
         setMensaje("Inicio de sesión exitoso");
       } else {
         setMensaje("Credenciales incorrectas. Inténtalo de nuevo.");
-
-        obtenerCaptcha();
       }
     } catch (error) {
       console.error("Error al iniciar sesión:", error);
       setMensaje("Error al iniciar sesión. Por favor, inténtalo de nuevo.");
     }
   };
-
-  useEffect(() => {
-    obtenerCaptcha();
-  }, []);
 
   return (
     <div className="flex justify-center pt-16">
@@ -79,30 +61,6 @@ export const IniciarSesion = () => {
                 id="password"
                 placeholder="Contraseña"
                 {...register("password", { required: true })}
-              />
-            </div>
-            <div className="col-span-full flex justify-center p-2">
-              <div className="flex items-center">
-                <input
-                  className="hidden"
-                  type="checkbox"
-                  id="captchaCheckbox"
-                  {...register("captchaCheckbox", { required: true })}
-                />
-                <label
-                  htmlFor="captchaCheckbox"
-                  className="cursor-pointer bg-white border border-gray-400 rounded-md p-2"
-                >
-                  <img src={captcha} alt="Captcha" />
-                </label>
-              </div>
-            </div>
-            <div className="col-span-full flex justify-center p-2">
-              <input
-                className="placeholder-black border border-black rounded-md pl-2 w-full drop-shadow-lg py-1"
-                type="text"
-                id="captchaInput"
-                {...register("captchaInput", { required: true })}
               />
             </div>
             <div className="col-span-full py-10 flex justify-center">

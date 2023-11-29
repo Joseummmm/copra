@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-11-2023 a las 23:24:20
+-- Tiempo de generación: 29-11-2023 a las 03:16:21
 -- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.2.4
+-- Versión de PHP: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -60,7 +60,7 @@ INSERT INTO `practicas` (`id_practica`, `titulo`, `nombre_empresa`, `ubicacion`,
 CREATE TABLE `usuarios` (
   `tipo_usuario` char(1) NOT NULL DEFAULT 'P',
   `email` varchar(50) NOT NULL,
-  `password` varchar(32) NOT NULL,
+  `password` int(11) NOT NULL,
   `nombre` varchar(150) NOT NULL,
   `descripcion` longtext NOT NULL,
   `area_trabajo` varchar(200) NOT NULL
@@ -71,16 +71,16 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`tipo_usuario`, `email`, `password`, `nombre`, `descripcion`, `area_trabajo`) VALUES
-('P', 'joseurbina0208@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 'José Urbina', 'Estudiante de ingeniería de ejecución en informática', 'Informática'),
-('P', 'maria@gmail.com', '01cfcd4f6b8770febfb40cb906715822', 'Maria Gonzalez', 'Desarrolladora de software', 'Tecnología'),
-('E', 'empresa@ejemplo.com', 'caff2749f2833128ee2d3fe5a61f8109', 'Empresa XYZ', 'Empresa de desarrollo de software', 'Tecnología'),
-('P', 'carlos@hotmail.com', 'b993062e77a98231f705119c2a219380', 'Carlos Rodríguez', 'Estudiante de medicina', 'Salud'),
-('P', 'sara@gmail.com', 'd4bf745d79c1673e822bc6d30dc61b88', 'Sara Pérez', 'Diseñadora gráfica', 'Diseño'),
-('E', 'compania@xyz.com', '9a7330f0f3239ae6068ef434ed484c9b', 'Compañía ABC', 'Empresa de consultoría', 'Consultoría'),
-('P', 'ana@ejemplo.com', '8ffdd9323147afa3ee6307fd90f555d9', 'Ana García', 'Ingeniera civil', 'Ingeniería'),
-('E', 'tecnosoluciones@empresa.com', '7e29e8acbdae72f3af3e65e6f2399418', 'TecnoSoluciones', 'Empresa de soluciones tecnológicas', 'Tecnología'),
-('P', 'juan@gmail.com', '5b69adb1af1fe70ab1ef0954127f5e07', 'Juan Pérez', 'Analista financiero', 'Finanzas'),
-('E', 'ingenieros@empresa.com', 'd1d58664faa244c3db7fe02fd61071ca', 'Ingenieros S.A.', 'Empresa de ingeniería', 'Ingeniería');
+('P', 'joseurbina0208@gmail.com', 12345, 'José Urbina', 'Estudiante de ingeniería de ejecución en informática', 'Informática'),
+('P', 'maria@gmail.com', 54321, 'Maria Gonzalez', 'Desarrolladora de software', 'Tecnología'),
+('E', 'empresa@ejemplo.com', 0, 'Empresa XYZ', 'Empresa de desarrollo de software', 'Tecnología'),
+('P', 'carlos@hotmail.com', 0, 'Carlos Rodríguez', 'Estudiante de medicina', 'Salud'),
+('P', 'sara@gmail.com', 0, 'Sara Pérez', 'Diseñadora gráfica', 'Diseño'),
+('E', 'compania@xyz.com', 0, 'Compañía ABC', 'Empresa de consultoría', 'Consultoría'),
+('P', 'ana@ejemplo.com', 0, 'Ana García', 'Ingeniera civil', 'Ingeniería'),
+('E', 'tecnosoluciones@empresa.com', 0, 'TecnoSoluciones', 'Empresa de soluciones tecnológicas', 'Tecnología'),
+('P', 'juan@gmail.com', 0, 'Juan Pérez', 'Analista financiero', 'Finanzas'),
+('E', 'ingenieros@empresa.com', 0, 'Ingenieros S.A.', 'Empresa de ingeniería', 'Ingeniería');
 
 --
 -- Índices para tablas volcadas
