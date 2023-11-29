@@ -4,18 +4,16 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const mysql = require("mysql");
-const Captcha = require("node-captcha-generator");
 const cors = require("cors");
 const crypto = require('crypto');
 
-// Variable global para almacenar el texto del captcha generado
-let textoDelCaptchaGenerado;
+// Variable global para almacenar
 
 var con = mysql.createConnection({
-    host: variables.env.DB_HOST,
-    user: variables.env.DB_USER,
-    password: variables.env.DB_PASSWORD,
-    database: variables.env.DB_DATABASE
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE
 });
 con.connect(function (error) {
     if (error) {
@@ -28,8 +26,9 @@ con.connect(function (error) {
 
 const configuracion = {
     hostname: "localhost",
-    port: variables.env.PORT 
+    port: process.env.PORT 
 };
+
 
 app.listen(configuracion, () => {
     console.log(`Conectando al servidor http://localhost:${configuracion.port}`);
