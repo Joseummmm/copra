@@ -617,6 +617,11 @@ video {
   margin-right: 1rem;
 }
 
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .mb-2 {
   margin-bottom: 0.5rem;
 }
@@ -627,6 +632,10 @@ video {
 
 .ml-\[-100\%\] {
   margin-left: -100%;
+}
+
+.mr-2 {
+  margin-right: 0.5rem;
 }
 
 .block {
@@ -689,8 +698,8 @@ video {
   width: 3.5rem;
 }
 
-.w-3\/12 {
-  width: 25%;
+.w-2\/3 {
+  width: 66.666667%;
 }
 
 .w-3\/4 {

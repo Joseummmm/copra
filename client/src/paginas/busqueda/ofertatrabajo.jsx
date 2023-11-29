@@ -25,20 +25,20 @@ export const OfertaTrabajo = () => {
   }, []);
 
   return (
-    <div className="w-3/4 m-auto">
+    <div className="w-3/4 mx-auto">
       {practicas.map((practica) => (
-        <div key={practica.id_practica} className="py-6">
+        <div key={practica.id} className="py-6">
           <div className="border border-black rounded-lg col-span-1 p-5 bg-gray-50 drop-shadow-lg grid grid-cols-6">
-            <h3 className="col-span-full">{practica.titulo}</h3>
-            <p className="col-span-2">{practica.nombre_empresa}</p>
-            <p className="col-span-2">{practica.ubicacion}</p>
+            <h3 className="col-span-full text-center">{practica.title}</h3>
+            <p className="col-span-2 text-center">{practica.nombreEmpresa}</p>
+            <p className="col-span-2 text-center">{practica.ubicacion}</p>
             <div className="col-span-2 flex justify-end">
               <div className="drop-shadow-lg grid grid-cols w-3/4">
                 <img src={practica.imagen} alt="imagen de empresa" className="w-1/2" />
               </div>
             </div>
             <div className="col-span-full flex justify-center">
-              <p>{practica.descripcion}</p>
+              <p className="text-center">{practica.descripcion}</p>
             </div>
             <div className="col-span-full flex justify-center">
               <button

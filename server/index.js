@@ -3,7 +3,10 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const mysql = require("mysql");
-const cors = require("cors"); // Agrega esta línea
+const cors = require("cors");
+const Captcha = require("node-captcha-generator"); 
+
+
 var con = mysql.createConnection({
     host: "localhost",
     user: "root",
@@ -28,6 +31,43 @@ app.listen(configuracion, () => {
 
 app.use(cors());
 app.use(bodyParser.json());
+app.use((req, res, next) => {
+  res.header("Acces-Control-Allow-Origin","*"); 
+  res.header("Acces-Control-Allow-Headers","Origin, X-Resquested-With, Content-Type, Accept"); 
+  next();
+});
+
+
+app.get('/captcha',function(req,res){
+  var c = new Captcha({
+    length: 5, 
+    size: {
+      width: 450, 
+      height: 200 
+    }
+  });
+
+  const captchaImage = captcha.image; 
+  const captchaText = captcha.text; 
+  const textoDelCaptchaGenerado = c.text; 
+
+  res.writeHead(200,{'Content-Type': 'image/png'}); 
+  captchaImage.pipe(res); 
+
+}); 
+
+
+
+
+app.post('/verificar-captcha',(req,res)=>{
+  const {captchaInput} = req.body;
+
+  if(captchaInput === textoDelCaptchaGenerado){
+    res.json({verificado: true}); 
+  } else {
+    res.json({verificado: false}); 
+  }
+}); 
 
 app.post('/insertarPracticas', (req, res) => {
   const practicas = req.body.practicas;
