@@ -1,21 +1,21 @@
-import React, { useState, useEffect} from "react";
-import { useForm} from "react-hook-form";
+import React, { useState, useEffect } from "react";
+import { useForm } from "react-hook-form";
 
 export const IniciarSesion = () => {
   const { register, formState: { errors }, handleSubmit } = useForm();
-  const [mensaje, setMensaje] = useState(null); 
-  const [captcha, setCaptcha] = useState(null); 
+  const [mensaje, setMensaje] = useState(null);
+  const [captcha, setCaptcha] = useState(null);
 
   const obtenerCaptcha = async () => {
     try {
-      const response = await fetch("http://localhost:3001/captcha"); 
-      const blob = await response.blob(); 
-      const imageUrl = URL.createObjectURL(blob); 
-      setCaptcha(imageUrl); 
-    }catch (error){
-      console.error("Error al obtener el Captcha",error); 
+      const response = await fetch("http://localhost:3001/captcha");
+      const blob = await response.blob();
+      const imageUrl = URL.createObjectURL(blob);
+      setCaptcha(imageUrl);
+    } catch (error) {
+      console.error("Error al obtener el Captcha", error);
     }
-  }
+  };
 
   const onSubmit = async (data) => {
     try {
@@ -32,9 +32,9 @@ export const IniciarSesion = () => {
       if (result.autenticado) {
         setMensaje("Inicio de sesión exitoso");
       } else {
-        setMensaje("Credenciales incorrectas. Inténtalo de nuevo."); 
+        setMensaje("Credenciales incorrectas. Inténtalo de nuevo.");
 
-        obtenerCaptcha(); 
+        obtenerCaptcha();
       }
     } catch (error) {
       console.error("Error al iniciar sesión:", error);
@@ -42,9 +42,9 @@ export const IniciarSesion = () => {
     }
   };
 
-  useEffect(()=>{
-    obtenerCaptcha(); 
-  },[]); 
+  useEffect(() => {
+    obtenerCaptcha();
+  }, []);
 
   return (
     <div className="flex justify-center pt-16">
@@ -57,7 +57,7 @@ export const IniciarSesion = () => {
             <h1 className="text-4xl font-bold text-center py-10">Iniciar sesión</h1>
           </div>
           <div className="grid grid-cols-8">
-            {errors.email?.type === "required" && ( 
+            {errors.email?.type === "required" && (
               <strong className="col-span-full flex justify-start p-2">* Ingrese un email válido</strong>
             )}
             <div className="col-span-full flex justify-center p-2">
@@ -65,8 +65,8 @@ export const IniciarSesion = () => {
                 className="placeholder-black border border-black rounded-md pl-2 w-full drop-shadow-lg py-1"
                 type="email"
                 id="email"
-                placeholder="Correo electrónico" 
-                {...register("email",{required:true})} 
+                placeholder="Correo electrónico"
+                {...register("email", { required: true })}
               />
             </div>
             {errors.password?.type === "required" && (
@@ -78,19 +78,31 @@ export const IniciarSesion = () => {
                 type="password"
                 id="password"
                 placeholder="Contraseña"
-                {...register("password",{required:true})}
+                {...register("password", { required: true })}
               />
             </div>
             <div className="col-span-full flex justify-center p-2">
-              <img src={captcha} alt="Captcha"/>
+              <div className="flex items-center">
+                <input
+                  className="hidden"
+                  type="checkbox"
+                  id="captchaCheckbox"
+                  {...register("captchaCheckbox", { required: true })}
+                />
+                <label
+                  htmlFor="captchaCheckbox"
+                  className="cursor-pointer bg-white border border-gray-400 rounded-md p-2"
+                >
+                  <img src={captcha} alt="Captcha" />
+                </label>
+              </div>
             </div>
             <div className="col-span-full flex justify-center p-2">
-              <input 
+              <input
                 className="placeholder-black border border-black rounded-md pl-2 w-full drop-shadow-lg py-1"
                 type="text"
                 id="captchaInput"
-                placeholder="Ingrese el codigo del Captcha"
-                {...register("captchaInput",{required:true})}
+                {...register("captchaInput", { required: true })}
               />
             </div>
             <div className="col-span-full py-10 flex justify-center">

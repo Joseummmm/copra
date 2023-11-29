@@ -3,9 +3,12 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const mysql = require("mysql");
+const Captcha = require("node-captcha-generator");
 const cors = require("cors");
-const Captcha = require("node-captcha-generator"); 
+const crypto = require('crypto');
 
+// Variable global para almacenar el texto del captcha generado
+let textoDelCaptchaGenerado;
 
 var con = mysql.createConnection({
     host: "localhost",
@@ -21,10 +24,12 @@ con.connect(function (error) {
         console.log("conexion exitosa");
     }
 });
+
 const configuracion = {
     hostname: "localhost",
     port: 3001,
 };
+
 app.listen(configuracion, () => {
     console.log(`Conectando al servidor http://localhost:${configuracion.port}`);
 });
@@ -32,41 +37,35 @@ app.listen(configuracion, () => {
 app.use(cors());
 app.use(bodyParser.json());
 app.use((req, res, next) => {
-  res.header("Acces-Control-Allow-Origin","*"); 
-  res.header("Acces-Control-Allow-Headers","Origin, X-Resquested-With, Content-Type, Accept"); 
-  next();
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
 });
 
+app.get('/captcha', function (req, res) {
+    var c = new Captcha({
+        length: 5,
+        size: {
+            width: 450,
+            height: 200
+        }
+    });
 
-app.get('/captcha',function(req,res){
-  var c = new Captcha({
-    length: 5, 
-    size: {
-      width: 450, 
-      height: 200 
+    textoDelCaptchaGenerado = c.text; // Almacena el texto del captcha en la variable global
+
+    const captchaImage = c.image;
+    res.writeHead(200, { 'Content-Type': 'image/png' });
+    captchaImage.pipe(res);
+});
+
+app.post('/verificar-captcha', (req, res) => {
+    const { captchaInput } = req.body;
+
+    if (captchaInput === textoDelCaptchaGenerado) {
+        res.json({ verificado: true });
+    } else {
+        res.json({ verificado: false });
     }
-  });
-
-  const captchaImage = captcha.image; 
-  const captchaText = captcha.text; 
-  const textoDelCaptchaGenerado = c.text; 
-
-  res.writeHead(200,{'Content-Type': 'image/png'}); 
-  captchaImage.pipe(res); 
-
-}); 
-
-
-
-
-app.post('/verificar-captcha',(req,res)=>{
-  const {captchaInput} = req.body;
-
-  if(captchaInput === textoDelCaptchaGenerado){
-    res.json({verificado: true}); 
-  } else {
-    res.json({verificado: false}); 
-  }
 }); 
 
 app.post('/insertarPracticas', (req, res) => {
@@ -209,8 +208,11 @@ app.post('/usuarios', (req, res) => {
   usuarios.forEach((usuario) => {
       const { email, tipo_usuario, nombre, descripcion, area_trabajo, password } = usuario;
 
+      // Encripta la contraseña con MD5
+      const encryptedPassword = crypto.createHash('md5').update(password).digest('hex');
+
       const query = 'INSERT INTO usuarios (email, tipo_usuario, nombre, descripcion, area_trabajo, password) VALUES (?, ?, ?, ?, ?, ?)';
-      const values = [email, tipo_usuario, nombre, descripcion, area_trabajo, password];
+      const values = [email, tipo_usuario, nombre, descripcion, area_trabajo, encryptedPassword];
 
       con.query(query, values, (err, result) => {
           if (err) {
@@ -234,9 +236,12 @@ app.post('/usuarios/verificarCredenciales', (req, res) => {
       return res.status(400).json({ error: 'Formato de solicitud no válido' });
   }
 
+  // Encripta la contraseña proporcionada con MD5
+  const encryptedPassword = crypto.createHash('md5').update(password).digest('hex');
+
   // Realiza la consulta en la base de datos para verificar las credenciales
   const query = 'SELECT * FROM usuarios WHERE email = ? AND password = ?';
-  const values = [email, password];
+  const values = [email, encryptedPassword];
 
   con.query(query, values, (err, result) => {
       if (err) {
@@ -253,7 +258,6 @@ app.post('/usuarios/verificarCredenciales', (req, res) => {
       }
   });
 });
-
 /*json de ejemplo
 
 {
